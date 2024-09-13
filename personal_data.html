@@ -4,6 +4,62 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Personal Data</title>
+    <style>
+        main {
+            display: flex;
+            padding: 20px;
+        }
+        section {
+            width: 70%;
+            padding: 10px;
+        }
+        aside {
+            width: 25%;
+            padding: 10px;
+            background-color: #f4f4f4;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        aside nav a {
+            display: flex;
+            flex-direction: column;
+            padding: 15px;
+            background-color: #202B49;
+            color: #f4f4f4;
+            text-decoration: none;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        div {
+            width: 70%;
+            padding: 10px;
+            margin-left: 20px;
+        }
+        h1 {
+            font-size: 3em;
+            font-style: italic;
+            color: #202B49;
+            margin:0;
+        }
+        h2 {
+            border-bottom: 2px solid #DA9F73;
+            color: black;
+        }
+        form div {
+            margin-bottom: 10px;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #179778;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #DA9F73;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
     <link rel="stylesheet" href="styles/style.css">
     <link rel="icon" href="images/favicon.jfif" type="image/x-icon">
 </head>
@@ -70,13 +126,13 @@
                         Cherry blossom in South Korea<br>
                         Date: 12.08.2024 - 20.08.2024<br>
                         <a href="#">Details</a>
-                    </li>
+                    </li><br>
                     <li>
                         <strong>Travel №2</strong><br>
                         Seventeen on the festival Glastonbury<br>
                         Date: 06.07.2024 - 13.07.2024<br>
                         <a href="#">Details</a>
-                    </li>
+                    </li><br>
                     <li>
                         <strong>Travel №3</strong><br>
                         Concert Aespa In Paris<br>
@@ -101,21 +157,21 @@
         <section id="settings">
             <h2>Settings</h2>
             <div>
-                <p>Settings of your account:</p><br>
+                <p>Settings of your account:</p>
                 <div>
-                    <label for="password">Password</label><br>
+                    <label for="password">Password:</label><br>
                     <input type="password" id="password" name="password" placeholder="Enter a new password">
                 </div>
                 <div>
-                    <label for="language">Language</label><br>
+                    <label for="language">Language:</label><br>
                     <select id="language" name="language">
                         <option value="ru">Russian</option>
                         <option value="en">English</option>
                     </select>
                 </div>
                 <div>
-                    <label for="notifications">Notifications</label><br>
-                    <input type="checkbox" id="notifications" name="notifications" checked> Get notifications on email
+                    <label for="notifications">Notifications:</label><br>
+                    <input type="checkbox" id="notifications" name="notifications" style="width: 20px" checked> Get notifications on email
                 </div>
                 <button type="submit">Save settings</button>
             </div>
@@ -124,32 +180,31 @@
 </main>
 
 <!--Footer-->
-    <footer>
-        <div class="footer-container">
-            <div class="footer-logo">
-                <img src="images/logo.png" width="70" height="70" alt="Logo">
-            </div>
-            <div class="footer-links">
-                <ul>
-                    <li><a href="#">Adventure Catalog</a></li>
-                    <li><a href="#">Contacts</a></li>
-                    <li><a href="#">About us</a></li>
-                </ul>
-                <ul>
-                    <li><a href="#">Maritime Journal</a></li>
-                    <li><a href="#">Partners</a></li>
-                    <li><a href="#">Travel Archive</a></li>
-                </ul>
-            </div>
-            <div class="footer-social">
-                <a href="#"><img src="images/svgs/facebook.svg" alt="Facebook"></a>
-                <a href="#"><img src="images/svgs/vk.svg" alt="VK"></a>
-                <a href="#"><img src="images/svgs/instagram.svg" alt="Instagram"></a>
-            </div>
+<footer>
+    <div class="footer-container">
+        <div class="footer-logo">
+            <img src="images/logo.png" width="70" height="70" alt="Logo">
         </div>
-        <div class="footer-bottom">
-            <p>Copywriting © 2024 index page by Komekbaeva Balzhan SE-2301</p>
+        <div class="footer-links">
+            <ul>
+                <li><a href="#">Adventure Catalog</a></li>
+                <li><a href="#">Contacts</a></li>
+            </ul>
+            <ul>
+                <li><a href="#">About us</a></li>
+                <li><a href="#">Partners</a></li>
+            </ul>
         </div>
+        <div class="footer-social">
+            <a href="#"><img src="images/svgs/facebook.svg" alt="Facebook"></a>
+            <a href="#"><img src="images/svgs/vk.svg" alt="VK"></a>
+            <a href="#"><img src="images/svgs/instagram.svg" alt="Instagram"></a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <a href="#" class="back-to-top">To the beginning <span>&#9650;</span></a>
+        <p>Copywriting © 2024 index page by Komekbaeva Balzhan SE-2301</p>
+    </div>
 </footer>
 </body>
 </html>
