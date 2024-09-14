@@ -200,6 +200,164 @@ iframe {
   background-color: #0056b3;
 }
 
+/* Personal Data */
+
+#personal_data main {
+  display: flex;
+  gap: 20px;
+  padding: 20px 10%;
+}
+
+#personal_data section {
+  flex: 1;
+  padding: 10px;
+}
+
+#personal_data aside {
+  flex-basis: 25%;
+  background-color: #f4f4f4;
+  padding: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#personal_data aside nav a {
+  display: block;
+  background-color: #202B49;
+  color: #f4f4f4;
+  padding: 15px;
+  margin-bottom: 10px;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+#personal_data aside nav a:hover {
+  background-color: #404B69;
+}
+
+#personal_data .content-wrapper {
+  flex: 1;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+#personal_data h1 {
+  font-size: 2.5rem;
+  color: #202B49;
+  margin-bottom: 20px;
+}
+
+#personal_data h2 {
+  color: #333;
+  margin-bottom: 10px;
+}
+
+#personal_data form div {
+  margin-bottom: 15px;
+}
+
+#personal_data label {
+  font-size: 1rem;
+  margin-bottom: 5px;
+  display: block;
+}
+
+#personal_data input, select, textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #179778;
+  border-radius: 4px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+#personal_data button {
+  padding: 10px 15px;
+  background-color: #DA9F73;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+#personal_data button:hover {
+  background-color: #0056b3;
+}
+
+#personal_data ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+#personal_data ul li {
+  margin-bottom: 15px;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border-radius: 4px;
+}
+
+#personal_data ul li a {
+  color: #DA9F73;
+  text-decoration: none;
+}
+
+#personal_data textarea {
+  resize: vertical;
+}
+
+/* About us */
+
+#about_us main {
+  display: flex;
+  padding: 20px;
+}
+
+#about_us section {
+  width: 90%;
+  padding: 10px;
+  margin-left: 50px;
+}
+
+#about_us h2, h3 {
+  color: black;
+  padding-bottom: 10px;
+}
+
+#about_us p, ul {
+  margin-left: 20px;
+}
+
+#about_us ul {
+  padding-left: 30px;
+  list-style-type: disc;
+}
+
+#about_us .team-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+#about_us .team-member {
+  text-align: center;
+  width: 30%;
+}
+
+#about_us .team-member img {
+  width: 100%;
+  max-width: 150px;
+  border-radius: 5px;
+}
+
+#about_us input, select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #179778;
+}
+
 /* Footer styling */
 footer {
   background-color: #ffffff;
