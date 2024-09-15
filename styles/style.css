@@ -1,19 +1,21 @@
-/* Fonts */
+/*fonts*/
+/* commissioner-regular - latin */
 @font-face {
-  font-display: swap;
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
   font-family: 'Commissioner';
   font-style: normal;
   font-weight: 400;
-  src: url('../fonts/commissioner-v20-latin-regular.woff2') format('woff2');
+  src: url('../fonts/commissioner-v20-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
-
+/* commissioner-700 - latin */
 @font-face {
-  font-display: swap;
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
   font-family: 'Commissioner';
   font-style: normal;
   font-weight: 700;
-  src: url('../fonts/commissioner-v20-latin-700.woff2') format('woff2');
+  src: url('../fonts/commissioner-v20-latin-700.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
+/*fonts*/
 
 /* Basic Styling */
 body {
@@ -64,6 +66,69 @@ header {
 .header_text:hover {
   color: #007bff;
 }
+
+/*INDEX PAGE*/
+.card_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card {
+  display: flex;
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  gap: 20px;
+  max-width: 800px;
+  margin: 20px auto;
+}
+
+.card_img {
+  width: 40%;
+  border-radius: 10px;
+}
+
+.card_info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 60%;
+}
+
+.card_title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.card_text {
+  font-size: 1rem;
+  margin-bottom: 15px;
+}
+
+.card_button_container {
+  text-align: left;
+  margin-top: 20px;
+}
+
+.card_button_text {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #e59866;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+}
+
+.card_button_text:hover {
+  background-color: #d35400;
+}
+
+/*INDEX PADE*/
 
 .partners {
   display: flex;
@@ -379,7 +444,8 @@ footer {
 }
 
 .footer-links ul {
-  list-style: none;
+  list-style-type: none;
+  margin: 0;
   padding: 0;
 }
 
@@ -387,9 +453,13 @@ footer {
   margin-bottom: 10px;
 }
 
+.footer-links ul {
+  list-style: none !important;
+}
+
 .footer-links a {
   text-decoration: none;
-  color: #333;
+  color: #333 !important;
   font-size: 1rem;
   transition: color 0.3s;
 }

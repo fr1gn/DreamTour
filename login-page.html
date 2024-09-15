@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="styles/login-page.css">
+</head>
+<header>
+    <figure class="logo_container">
+        <img src="images/logo.png" width="70" height="70" alt="Company Logo" class="header_logo">
+        <figcaption>DreamTour</figcaption>
+    </figure>
+    <div class="header_title_container">
+        <a href="index.html" class="header_text">Adventure Catalog</a>
+        <a href="contacts.html" class="header_text">Contacts</a>
+        <a href="about_us.html" class="header_text">About Us</a>
+        <a href="partners.html" class="header_text">Partners</a>
+    </div>
+</header>
+<body>
+    <div class="container">
+        <div class="left">
+            <img src="images/login-page/body.jpg" alt="Background Image">
+        </div>
+        <div class="right">
+            <div class="content">
+                <div class="logo">
+                    <h1 class="logo_text">DreamTour</h1>
+                </div>
+                <div class="login-form">
+                    <h2 class="welcome">Welcome back! 👋</h2>
+                    <h3>Login to your account</h3>
+                    <form action="main-page.html" method="post">
+                        <div class="input-group">
+                            <label for="username">Login</label>
+                            <input type="text" id="username" name="username" placeholder="Please enter your login" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="password">Password</label>
+                            <input type="password" id="password" name="password" placeholder="Enter password" required>
+                        </div>
+                        <div class="input-group remember-forgot">
+                            <div class="remember-me">
+                                <label for="remember-me">Remember Me</label>
+                                <input type="checkbox" id="remember-me" name="remember-me">
+                            </div>
+                            <div class="forgot-password">
+                                <a href="forgot-password.html">Forgot Password?</a>
+                            </div>
+                        </div>
+                        <button type="submit">Login</button>
+                    </form>
+                    <div class="register">
+                        <h3>Don't have an account?</h3>
+                        <a href="register-page.html" class="register-button">Register</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>Copywriting © 2024 login page by Zhanashev Tairlan SE-2301</p>
+    </footer>
+</body>
+</html>
