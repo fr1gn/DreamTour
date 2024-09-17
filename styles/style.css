@@ -136,7 +136,7 @@ header {
   display: flex;
   flex-wrap: wrap; /* Allow for wrapping on smaller screens */
   justify-content: space-around;
-  gap: 30px; /* Added gap for spacing between items */
+  gap: 30px; /* Gap between elements */
   margin-bottom: 40px;
 }
 
@@ -248,7 +248,7 @@ iframe {
 
 .input-group input,
 .input-group textarea {
-  width: 100%;
+  width: 95%;
   padding: 10px;
   border: 1px solid #179778;
   border-radius: 5px;
