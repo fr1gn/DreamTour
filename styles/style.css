@@ -270,7 +270,6 @@ iframe {
 }
 
 /* Personal Data */
-
 #personal_data main {
   display: flex;
   gap: 20px;
@@ -281,7 +280,6 @@ iframe {
   flex: 1;
   padding: 10px;
 }
-
 #personal_data aside {
   flex-basis: 25%;
   background-color: #f4f4f4;
@@ -289,18 +287,13 @@ iframe {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-#personal_data aside nav a {
-  display: block;
+#personal_data .nav-link{
   background-color: #202B49;
-  color: #f4f4f4;
-  padding: 15px;
-  margin-bottom: 10px;
-  text-align: center;
   text-decoration: none;
-  transition: background-color 0.3s ease;
+  color: white;
 }
 
-#personal_data aside nav a:hover {
+#personal_data .nav-link:hover{
   background-color: #404B69;
 }
 
@@ -322,40 +315,6 @@ iframe {
   color: #333;
   margin-bottom: 10px;
 }
-
-#personal_data form div {
-  margin-bottom: 15px;
-}
-
-#personal_data label {
-  font-size: 1rem;
-  margin-bottom: 5px;
-  display: block;
-}
-
-#personal_data input, select, textarea {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #179778;
-  border-radius: 4px;
-  font-size: 1rem;
-  box-sizing: border-box;
-}
-
-#personal_data button {
-  padding: 10px 15px;
-  background-color: #DA9F73;
-  color: white;
-  border: none;
-  cursor: pointer;
-  border-radius: 4px;
-  transition: background-color 0.3s ease;
-}
-
-#personal_data button:hover {
-  background-color: #0056b3;
-}
-
 #personal_data ul {
   list-style-type: none;
   padding: 0;
@@ -375,6 +334,7 @@ iframe {
 
 #personal_data textarea {
   resize: vertical;
+  border-color: #179778;
 }
 
 /* About us */
@@ -402,29 +362,6 @@ iframe {
 #about_us ul {
   padding-left: 30px;
   list-style-type: disc;
-}
-
-#about_us .team-container {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 20px;
-}
-
-#about_us .team-member {
-  text-align: center;
-  width: 30%;
-}
-
-#about_us .team-member img {
-  width: 100%;
-  max-width: 150px;
-  border-radius: 5px;
-}
-
-#about_us input, select {
-  width: 100%;
-  padding: 8px;
-  border: 1px solid #179778;
 }
 
 /* Footer styling */

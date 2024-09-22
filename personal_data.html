@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <title>My Personal Data</title>
     <link rel="stylesheet" href="styles/style.css">
     <link rel="icon" href="images/favicon.jfif" type="image/x-icon">
@@ -27,13 +28,14 @@
 <main>
     <!-- Sidebar -->
     <aside>
-        <nav>
-            <a href="#my-data">My Data</a>
-            <a href="#my-travels">My Travels</a>
-            <a href="#my-notes">My Notes</a>
-            <a href="#settings">Settings</a>
+        <nav class="nav nav-pills flex-column text-center">
+            <a class="nav-link mb-2" href="#my-data"> My Data</a>
+            <a class="nav-link mb-2" href="#my-travels"> My Travels</a>
+            <a class="nav-link mb-2" href="#my-notes"> My Notes</a>
+            <a class="nav-link mb-2" href="#settings"> Settings</a>
         </nav>
     </aside>
+
 
     <!-- Content -->
     <div class="content-wrapper">
@@ -41,24 +43,26 @@
         <section id="my-data">
             <h1>My Personal Data</h1>
             <h2>My Data</h2>
-            <form action="/save-data" method="POST">
-                <div>
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" name="name" placeholder="Your name">
+            <form class="row g-3 d-flex flex-wrap" action="/save-data" method="POST">
+                <div class="input-group">
+                    <span class="input-group-text">Name</span>
+                    <input class="form-control" type="text" id="name" name="name" placeholder="Your name" aria-label="Name" required>
                 </div>
-                <div>
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" placeholder="your.email@example.com">
+                <div class="input-group">
+                    <input class="form-control" type="email" id="email" name="email" placeholder="Your.email" aria-label="Email" required>
+                    <span class="input-group-text">@example.com</span>
                 </div>
-                <div>
-                    <label for="phone_number">Phone Number:</label>
-                    <input type="tel" id="phone_number" name="phone_number" placeholder="+7 (123) 456-78-90">
+                <div class="input-group">
+                    <span class="input-group-text">Phone number</span>
+                    <input class="form-control" type="tel" id="phone_number" name="phone_number" placeholder="+7 (123) 456-78-90" aria-label="Phone Number" required>
                 </div>
-                <div>
-                    <label for="city">City:</label>
-                    <input type="text" id="city" name="city" placeholder="City">
+                <div class="input-group">
+                    <span class="input-group-text">City</span>
+                    <input class="form-control" type="text" id="city" name="city" placeholder="City" aria-label="City">
                 </div>
-                <button type="submit">Save</button>
+                <div class="col-12">
+                    <button class="btn btn-outline-success" type="submit">Save</button>
+                </div>
             </form>
         </section>
 
@@ -87,29 +91,22 @@
         <!-- My Notes -->
         <section id="my-notes">
             <h2>My Notes</h2>
-            <textarea rows="10" placeholder="Enter a note..."></textarea><br>
-            <button type="button">Save Note</button>
+            <textarea class="form-control" style="height: 100px" placeholder="Enter a note..."></textarea><br>
+            <button class="btn btn-outline-success" type="button">Save Note</button>
         </section>
 
         <!-- Settings -->
         <section id="settings">
             <h2>Settings</h2>
-            <div>
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" placeholder="Enter a new password">
+            <div class="input-group">
+                <span class="input-group-text">Password</span>
+                <input class="form-control" type="password" id="password" name="password" placeholder="Enter a new password" aria-label="Password">
             </div>
-            <div>
-                <label for="language">Language:</label>
-                <select id="language" name="language">
-                    <option value="en">English</option>
-                    <option value="ru">Russian</option>
-                </select>
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" role="switch" id="notifications" checked>
+                <label class="form-check-label" for="notifications">Get notifications on email</label>
             </div>
-            <div>
-                <label for="notifications">Notifications:</label>
-                <input type="checkbox" id="notifications" name="notifications" checked> Get notifications on email
-            </div>
-            <button type="submit">Save Settings</button>
+            <button class="btn btn-outline-success" type="submit">Save Settings</button>
         </section>
     </div>
 </main>
