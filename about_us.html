@@ -6,24 +6,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <title>About Us</title>
-    <link rel="stylesheet" href="styles/style.css">
+
     <link rel="icon" href="images/favicon.jfif" type="image/x-icon">
 </head>
 
 <body id="about_us">
-<!--Header-->
+
 <header>
-    <div class="logo_container">
-        <img src="images/logo.png" width="70" height="70" alt="Company Logo" class="header_logo">
-        <figcaption class="company_name">DreamTour</figcaption>
-    </div>
-    <div class="header_title_container">
-        <a href="main-page.html" class="header_text">Adventure Catalog</a>
-        <a href="contacts.html" class="header_text">Contacts</a>
-        <a href="about_us.html" class="header_text">About us</a>
-        <a href="partners.html" class="header_text">Partners</a>
-        <a href="personal_data.html" class="header_text">Personal Data</a>
-    </div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+        <div class="container d-flex justify-content-between align-items-center">
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <img src="images/logo.png" width="70" height="70" alt="Company Logo" class="me-2">
+                <span class="company_name">DreamTour</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="main-page.html">Adventure Catalog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contacts.html">Contacts</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about_us.html">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="partners.html">Partners</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="personal_data.html">Personal Data</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 </header>
 
 <!--Main content-->
@@ -76,34 +96,29 @@
     </section>
 </main>
 
-<!--Footer-->
-<footer>
-    <div class="footer-container">
-        <div class="logo_container">
-            <img src="images/logo.png" width="70" height="70" alt="Company Logo" class="header_logo">
-            <figcaption class="company_name">DreamTour</figcaption>
+<footer class="bg-white py-4">
+    <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center">
+        <div class="d-flex align-items-center mb-3 mb-md-0">
+            <img src="images/logo.png" width="70" height="70" alt="Company Logo">
+            <figcaption class="company_name ms-3">DreamTour</figcaption>
         </div>
-        <div class="footer-links">
-            <ul>
-                <li><a href="index.html">Adventure Catalog</a></li>
-                <li><a href="contacts.html">Contacts</a></li>
-            </ul>
-            <ul>
-                <li><a href="about_us.html">About Us</a></li>
-                <li><a href="partners.html">Partners</a></li>
-            </ul>
-        </div>
-        <div class="footer-social">
-            <a href="#"><img src="images/svgs/facebook.svg" alt="Facebook"></a>
-            <a href="#"><img src="images/svgs/vk.svg" alt="VK"></a>
+        <ul class="list-unstyled d-flex mb-0">
+            <li class="ms-3"><a class="text-dark" href="index.html">Adventure Catalog</a></li>
+            <li class="ms-3"><a class="text-dark" href="contacts.html">Contacts</a></li>
+            <li class="ms-3"><a class="text-dark" href="about_us.html">About Us</a></li>
+            <li class="ms-3"><a class="text-dark" href="partners.html">Partners</a></li>
+        </ul>
+        <div class="d-flex align-items-center mt-3 mt-md-0">
+            <a href="#" class="me-3"><img src="images/svgs/facebook.svg" alt="Facebook"></a>
+            <a href="#" class="me-3"><img src="images/svgs/vk.svg" alt="VK"></a>
             <a href="#"><img src="images/svgs/instagram.svg" alt="Instagram"></a>
         </div>
     </div>
-    <div class="footer-bottom">
-        <a href="#" class="back-to-top">To the beginning <span>&#9650;</span></a>
-        <p>Copywriting © 2024 about us page by Komekbaeva Balzhan SE-2301</p>
+    <div class="text-center mt-3">
+        <a href="#" class="text-dark">To the beginning <span>&#9650;</span></a>
+        <p class="small mb-0">Copywriting © 2024 about us page by Balzhan Komekbaeva SE-2301</p>
     </div>
 </footer>
-</body>
 
+</body>
 </html>
