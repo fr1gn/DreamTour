@@ -361,7 +361,7 @@ iframe {
 
 #about_us ul {
   padding-left: 30px;
-  list-style-type: disc;
+  list-style-type: none;
 }
 
 /* Footer styling */
