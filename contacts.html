@@ -4,95 +4,125 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DreamTour - Our Contacts</title>
-    <link rel="stylesheet" href="styles/style.css">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="icon" href="images/logo.png" type="image/x-icon">
 </head>
 <body>
+
 <header>
-    <div class="logo_container">
-        <img src="images/logo.png" width="70" height="70" alt="Company Logo" class="header_logo">
-        <figcaption class="company_name">DreamTour</figcaption>
-    </div>
-    <nav class="header_title_container">
-        <a href="main-page.html" class="header_text">Adventure Catalog</a>
-        <a href="contacts.html" class="header_text">Contacts</a>
-        <a href="about_us.html" class="header_text">About Us</a>
-        <a href="partners.html" class="header_text">Partners</a>
-        <a href="personal_data.html" class="header_text">Personal Data</a>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="images/logo.png" width="50" height="50" alt="Company Logo" class="d-inline-block align-top">
+                DreamTour
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="main-page.html">Adventure Catalog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contacts.html">Contacts</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about_us.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="partners.html">Partners</a></li>
+                    <li class="nav-item"><a class="nav-link" href="personal_data.html">Personal Data</a></li>
+                </ul>
+            </div>
+        </div>
     </nav>
 </header>
 
-<main>
-    <h1 class="main_text">Contact Us</h1>
-    <p class="sub_text">We’d love to hear from you! Whether you have a question about an adventure, need assistance, or just want to say hello, feel free to reach out to us using the contact details below.</p>
+<main class="container mt-5">
+    <h1 class="text-center mb-4">Contact Us</h1>
+    <p class="text-center mb-5">We’d love to hear from you! Whether you have a question about an adventure, need assistance, or just want to say hello, feel free to reach out to us using the contact details below.</p>
 
-    <section class="contact-details">
-        <div class="contact-item">
+    <section class="row text-center mb-5">
+        <div class="col-md-4">
             <h2 class="contact-title">Phone</h2>
             <img src="images/contacts/phone.png" width="50" height="50" alt="Phone">
             <p class="contact-info">+7 708 494 0111</p>
         </div>
-        <div class="contact-item">
+        <div class="col-md-4">
             <h2 class="contact-title">Email</h2>
             <img src="images/contacts/mail.png" width="50" height="50" alt="Email">
             <p class="contact-info">info@dreamtour.com</p>
         </div>
-        <div class="contact-item">
+        <div class="col-md-4">
             <h2 class="contact-title">Address</h2>
             <img src="images/contacts/here.png" width="50" height="50" alt="Address">
             <p class="contact-info">Mangilik El C1, Astana, Kazakhstan</p>
         </div>
     </section>
 
-    <div class="map-container">
-        <h2>Find us on Google Maps</h2>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2505.96360542445!2d71.41559597647695!3d51.0906791717216!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x424585a605525605%3A0x4dff4a1973f7567e!2sAstana%20IT%20University!5e0!3m2!1sen!2skz!4v1726294980506!5m2!1sen!2skz" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <div class="mb-5">
+        <h2 class="text-center mb-3">Find us on Google Maps</h2>
+        <div class="d-flex justify-content-center">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2505.96360542445!2d71.41559597647695!3d51.0906791717216!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x424585a605525605%3A0x4dff4a1973f7567e!2sAstana%20IT%20University!5e0!3m2!1sen!2skz!4v1726294980506!5m2!1sen!2skz" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
     </div>
 
-    <h2 class="main_text">Get in touch with us!</h2>
-    <form class="contact-form" action="submit_contact_form.html" method="post">
-        <div class="input-group">
-            <label for="name">Your Name</label>
-            <input type="text" id="name" name="name" placeholder="Enter your name" required>
+    <h2 class="text-center mb-4">Get in touch with us!</h2>
+    <form class="contact-form row g-3" action="submit_contact_form.html" method="post">
+        <div class="col-md-6">
+            <label for="name" class="form-label">Your Name</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required>
         </div>
-        <div class="input-group">
-            <label for="number">Your Phone Number</label>
-            <input type="tel" id="number" name="number" placeholder="Enter your phone number" required>
+        <div class="col-md-6">
+            <label for="number" class="form-label">Your Phone Number</label>
+            <input type="tel" class="form-control" id="number" name="number" placeholder="Enter your phone number" required>
         </div>
-        <div class="input-group">
-            <label for="message">Your Message</label>
-            <textarea id="message" name="message" placeholder="Write your message" required></textarea>
+        <div class="col-12">
+            <label for="message" class="form-label">Your Message</label>
+            <textarea id="message" class="form-control" name="message" placeholder="Write your message" required></textarea>
         </div>
-        <button type="submit" class="submit-button">Send Message</button>
+        <div class="col-12 text-center">
+            <button type="submit" class="btn btn-primary">Send Message</button>
+        </div>
     </form>
 </main>
 
-<footer>
-    <div class="footer-container">
-        <div class="logo_container">
-            <img src="images/logo.png" width="70" height="70" alt="Company Logo" class="footer_logo">
-            <figcaption class="company_name">DreamTour</figcaption>
+<!-- Updated Footer with Bootstrap -->
+<footer class="bg-white py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-4 d-flex align-items-center">
+                <img src="images/logo.png" alt="Company Logo" width="70" height="70" class="footer_logo mr-3">
+                <figcaption class="company_name h4 mb-0">DreamTour</figcaption>
+            </div>
+            <div class="col-md-4">
+                <ul class="nav justify-content-center">
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="index.html">Adventure Catalog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="contacts.html">Contacts</a>
+                    </li>
+                </ul>
+                <ul class="nav justify-content-center">
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="about_us.html">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="partners.html">Partners</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-4 text-center">
+                <a href="#"><img src="images/svgs/facebook.svg" alt="Facebook" class="mr-3"></a>
+                <a href="#"><img src="images/svgs/vk.svg" alt="VK" class="mr-3"></a>
+                <a href="#"><img src="images/svgs/instagram.svg" alt="Instagram"></a>
+            </div>
         </div>
-        <div class="footer-links">
-            <ul>
-                <li><a href="index.html">Adventure Catalog</a></li>
-                <li><a href="contacts.html">Contacts</a></li>
-            </ul>
-            <ul>
-                <li><a href="about_us.html">About Us</a></li>
-                <li><a href="partners.html">Partners</a></li>
-            </ul>
+        <div class="text-center mt-4">
+            <a href="#" class="text-dark">To the beginning <span>&#9650;</span></a>
+            <p class="mt-2">Copywriting © 2024 partners page by Damir Bekturov SE-2301</p>
         </div>
-        <div class="footer-social">
-            <a href="#"><img src="images/svgs/facebook.svg" alt="Facebook"></a>
-            <a href="#"><img src="images/svgs/vk.svg" alt="VK"></a>
-            <a href="#"><img src="images/svgs/instagram.svg" alt="Instagram"></a>
-        </div>
-    </div>
-    <div class="footer-bottom">
-        <a href="#" class="back-to-top">To the beginning <span>&#9650;</span></a>
-        <p>Copywriting © 2024 contacts page by Damir Bekturov SE-2301</p>
     </div>
 </footer>
+
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
