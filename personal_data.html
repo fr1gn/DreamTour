@@ -65,29 +65,28 @@
                 <h2>My Data</h2>
                 <form class="row g-3" action="/save-data" method="POST">
                     <div class="col-md-6">
-                        <label for="name" class="form-label">Name</label>
                         <div class="input-group">
                             <span class="input-group-text">Name</span>
                             <input class="form-control" type="text" id="name" name="name" placeholder="Your name" aria-label="Name" required>
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <label for="email" class="form-label">Email</label>
                         <div class="input-group">
-                            <input class="form-control" type="email" id="email" name="email" placeholder="Your.email" aria-label="Email" required>
+                            <input class="form-control" type="email" id="email" name="email" placeholder="Your_email" aria-label="Email" required>
                             <span class="input-group-text">@example.com</span>
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <label for="phone_number" class="form-label">Phone Number</label>
                         <div class="input-group">
                             <span class="input-group-text">Phone</span>
                             <input class="form-control" type="tel" id="phone_number" name="phone_number" placeholder="+7 (123) 456-78-90" aria-label="Phone Number" required>
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <label for="city" class="form-label">City</label>
-                        <input class="form-control" type="text" id="city" name="city" placeholder="City" aria-label="City">
+                        <div class="input-group">
+                            <span class="input-group-text">City</span>
+                            <input class="form-control" type="text" id="city" name="city" placeholder="City" aria-label="City">
+                        </div>
                     </div>
                     <div class="col-12">
                         <button class="btn btn-outline-success" type="submit">Save</button>
@@ -128,7 +127,6 @@
             <section id="settings" class="my-4">
                 <h2>Settings</h2>
                 <div class="mb-3">
-                    <label for="password" class="form-label">Password</label>
                     <div class="input-group">
                         <span class="input-group-text">Password</span>
                         <input class="form-control" type="password" id="password" name="password" placeholder="Enter a new password" aria-label="Password">
