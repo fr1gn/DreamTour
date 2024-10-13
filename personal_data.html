@@ -8,46 +8,6 @@
     <link rel="icon" href="images/favicon.jfif" type="image/x-icon">
 </head>
 <body id="personal_data">
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Select all section links and sections
-        const links = document.querySelectorAll('aside nav a');
-        const sections = document.querySelectorAll('main section');
-
-        // Function to show the clicked section and hide others
-        function showSection(targetId) {
-            sections.forEach(section => {
-                if (section.id === targetId) {
-                    section.style.display = 'block'; // Show the target section
-                } else {
-                    section.style.display = 'none';  // Hide all other sections
-                }
-            });
-        }
-
-        // Initially show only "My Data" section
-        showSection('my-data');
-
-        // Add event listener for each sidebar link
-        links.forEach(link => {
-            link.addEventListener('click', function(event) {
-                event.preventDefault();
-
-                // Remove 'active' class from all links
-                links.forEach(item => item.classList.remove('active'));
-
-                // Add 'active' class to the clicked link
-                this.classList.add('active');
-
-                // Get the target section ID from the link's href attribute
-                const targetId = this.getAttribute('href').substring(1);
-
-                // Show the relevant section
-                showSection(targetId);
-            });
-        });
-    });
-</script>
 
 <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
@@ -201,6 +161,7 @@
         </div>
     </div>
     <div class="text-center mt-3">
+        <a href="#" class="text-dark">To the beginning <span>&#9650;</span></a>
         <p class="small mb-0">Copywriting © 2024 about us page by Balzhan Komekbaeva SE-2301</p>
     </div>
 </footer>

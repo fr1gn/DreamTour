@@ -58,7 +58,7 @@
                             <p class="card-text">Your Manager: Tairlan Zhanashev</p>
                         </div>
                         <div class="card-footer">
-                            <a href="#" class="btn btn-primary w-100">Leave a request</a>
+                            <a href="#" class="btn btn-primary w-100 leave-request-btn">Leave a request</a>
                         </div>
                     </div>
                 </div>
@@ -72,7 +72,7 @@
                             <p class="card-text">Your Manager: Balzhan Komekbaeva</p>
                         </div>
                         <div class="card-footer">
-                            <a href="#" class="btn btn-primary w-100">Leave a request</a>
+                            <a href="#" class="btn btn-primary w-100 leave-request-btn">Leave a request</a>
                         </div>
                     </div>
                 </div>
@@ -86,26 +86,39 @@
                             <p class="card-text">Your Manager: Damir Bekturov</p>
                         </div>
                         <div class="card-footer">
-                            <a href="#" class="btn btn-primary w-100">Leave a request</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="card h-100">
-                        <img src="images/svgs/card_img.svg" alt="Sea and luxury" class="card-img-top">
-                        <div class="card-body">
-                            <h5 class="card-title">Itinerary: France -> Portugal</h5>
-                            <p class="card-text">Date: 20 December - 30 December</p>
-                            <p class="card-text">Number of seats: 10 of 45 spots left</p>
-                            <p class="card-text">Your Manager: Tairlan Zhanashev</p>
-                        </div>
-                        <div class="card-footer">
-                            <a href="#" class="btn btn-primary w-100">Leave a request</a>
+                            <a href="#" class="btn btn-primary w-100 leave-request-btn">Leave a request</a>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+        <div class="modal fade" id="requestModal" tabindex="-1" aria-labelledby="requestModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="requestModalLabel">Leave a Request</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="requestForm">
+                            <div class="mb-3">
+                                <label for="userName" class="form-label">Your Name</label>
+                                <input type="text" class="form-control" id="userName" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="userEmail" class="form-label">Your Email</label>
+                                <input type="email" class="form-control" id="userEmail" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="userMessage" class="form-label">Message</label>
+                                <textarea class="form-control" id="userMessage" rows="3" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">Submit Request</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
 
     <footer class="bg-white py-4">
@@ -114,7 +127,7 @@
                 <img src="images/logo.png" width="70" height="70" alt="Company Logo">
                 <figcaption class="company_name ms-3">DreamTour</figcaption>
             </div>
-            <ul class="list-unstyled d-flex mb-0">
+            <ul class="d-flex flex-column mb-0">
                 <li class="ms-3"><a class="text-dark" href="index.html">Adventure Catalog</a></li>
                 <li class="ms-3"><a class="text-dark" href="contacts.html">Contacts</a></li>
                 <li class="ms-3"><a class="text-dark" href="about_us.html">About Us</a></li>
@@ -131,9 +144,80 @@
             <p class="small mb-0">Copywriting © 2024 index page by Zhanashev Tairlan SE-2301</p>
         </div>
     </footer>
-    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Получаем все кнопки "Leave a Request"
+        const requestButtons = document.querySelectorAll('.leave-request-btn');
 
-    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+        // Инициализация модального окна Bootstrap
+        const requestModal = new bootstrap.Modal(document.getElementById('requestModal'));
+
+        // Добавляем обработчик клика на каждую кнопку
+        requestButtons.forEach(button => {
+            button.addEventListener('click', (event) => {
+                event.preventDefault(); // Отключаем стандартное действие ссылки
+                requestModal.show();    // Открываем модальное окно
+            });
+        });
+
+        // Функция для сохранения заявки в localStorage
+        function saveRequestToLocalStorage(request) {
+            // Получаем текущие заявки из localStorage
+            let requests = JSON.parse(localStorage.getItem('requests')) || [];
+            // Добавляем новую заявку в массив
+            requests.push(request);
+            // Сохраняем обновленный массив в localStorage
+            localStorage.setItem('requests', JSON.stringify(requests));
+            // Создаем файл JSON
+            createJSONFile(requests);
+        }
+
+        // Функция для создания файла JSON и скачивания
+        function createJSONFile(requests) {
+            const json = JSON.stringify(requests, null, 2); // Преобразование в JSON-формат
+            const blob = new Blob([json], { type: 'application/json' }); // Создание Blob
+            const url = URL.createObjectURL(blob); // Создание URL для Blob
+
+            // Создание ссылки для скачивания
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'requests.json'; // Имя файла
+            document.body.appendChild(a);
+            a.click(); // Автоматический клик для начала скачивания
+            document.body.removeChild(a); // Удаление ссылки
+            URL.revokeObjectURL(url); // Освобождение памяти
+        }
+
+        // Обработка отправки формы
+        document.getElementById('requestForm').addEventListener('submit', function (event) {
+            event.preventDefault(); // Остановка отправки формы
+
+            // Получаем данные формы
+            const name = document.getElementById('userName').value;
+            const email = document.getElementById('userEmail').value;
+            const message = document.getElementById('userMessage').value;
+
+            // Создаем объект заявки
+            const request = {
+                name: name,
+                email: email,
+                message: message,
+                date: new Date().toISOString()
+            };
+
+            // Сохраняем заявку в localStorage
+            saveRequestToLocalStorage(request);
+
+            // Закрываем модальное окно
+            requestModal.hide();
+
+            // Очистка формы
+            this.reset();
+
+            // Уведомление об успешной отправке
+            alert("Your request has been submitted and saved successfully!");
+        });
+    </script>
 </body>
 
 </html>
