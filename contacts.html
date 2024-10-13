@@ -74,18 +74,18 @@
     </div>
 
     <h2 class="text-center mb-4">Get in touch with us!</h2>
-    <form class="contact-form row g-3" action="submit_contact_form.html" method="post">
+    <form class="contact-form row g-3" id="contactForm">
         <div class="col-md-6">
             <label for="name" class="form-label">Your Name</label>
-            <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required>
+            <input type="text" class="form-control" id="name" placeholder="Enter your name" required>
         </div>
         <div class="col-md-6">
             <label for="number" class="form-label">Your Phone Number</label>
-            <input type="tel" class="form-control" id="number" name="number" placeholder="Enter your phone number" required>
+            <input type="tel" class="form-control" id="number" placeholder="Enter your phone number" required>
         </div>
         <div class="col-12">
             <label for="message" class="form-label">Your Message</label>
-            <textarea id="message" class="form-control" name="message" placeholder="Write your message" required></textarea>
+            <textarea id="message" class="form-control" placeholder="Write your message" required></textarea>
         </div>
         <div class="col-12 text-center">
             <button type="submit" class="btn btn-outline-success">Send Message</button>
@@ -116,6 +116,39 @@
         <p class="small mb-0">Copywriting © 2024 contacts page by Damir Bekturov SE-2301</p>
     </div>
 </footer>
+
+<script>
+    document.getElementById('contactForm').addEventListener('submit', function (event) {
+        event.preventDefault(); // Prevent the default form submission
+
+        // Get form values
+        const name = document.getElementById('name').value;
+        const number = document.getElementById('number').value;
+        const message = document.getElementById('message').value;
+
+        // Create a message object
+        const messageObject = {
+            name: name,
+            number: number,
+            message: message
+        };
+
+        // Get existing messages from local storage
+        let messages = JSON.parse(localStorage.getItem('messages')) || [];
+
+        // Add the new message to the array
+        messages.push(messageObject);
+
+        // Save the updated messages back to local storage
+        localStorage.setItem('messages', JSON.stringify(messages));
+
+        // Show an alert to the user
+        alert('Your message has been saved!');
+
+        // Optionally, clear the form fields
+        document.getElementById('contactForm').reset();
+    });
+</script>
 
 </body>
 </html>
