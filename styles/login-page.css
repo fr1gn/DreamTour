@@ -44,7 +44,7 @@ header {
     margin-right: 15px;
 }
 
-.company_name {
+.fw-bold {
     font-size: 1.6rem;
     font-weight: bold;
     color: #333;
