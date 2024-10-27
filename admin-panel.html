@@ -8,7 +8,6 @@
 </head>
 <body>
 <header>
-    <!-- Ваш хедер со ссылками -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
         <div class="container d-flex justify-content-between align-items-center">
             <a class="navbar-brand d-flex align-items-center" href="main-page.html">
@@ -49,15 +48,24 @@
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {
-        // Параметры пользователей в localStorage для тестирования
         const users = JSON.parse(localStorage.getItem("users")) || [
-            { username: "admin", password: "admin123", role: "admin", firstName: "Admin", lastName: "User", email: "admin@example.com" },
-            { username: "user1", password: "user123", role: "user", firstName: "John", lastName: "Doe", email: "john@example.com" },
+            { username: "admin", password: "adminadmin", role: "admin", firstName: "Admin", lastName: "Admin", email: "admin@admin.com" },
         ];
         const userTableBody = document.getElementById("userTableBody");
 
         function renderUserTable() {
-            userTableBody.innerHTML = ""; // Очищаем таблицу
+            userTableBody.innerHTML = "";
+
+            // Get the personal data from localStorage
+            const savedPersonalData = JSON.parse(localStorage.getItem("personalData"));
+
+            // Add the personal data to the users array if it exists
+            if (savedPersonalData) {
+                users[0].firstName = savedPersonalData.firstName;
+                users[0].lastName = savedPersonalData.lastName;
+                users[0].email = savedPersonalData.email;
+            }
+
             users.forEach((user, index) => {
                 const row = document.createElement("tr");
 
@@ -84,9 +92,20 @@
             users[index].email = row.cells[3].children[0].value;
             users[index].password = row.cells[4].children[0].value;
 
+            // Save updated users array to localStorage
             localStorage.setItem("users", JSON.stringify(users));
+
+            // Also update personal data if this is the primary user
+            if (index === 0) { // Assuming the first user is the primary user
+                const personalData = {
+                    firstName: users[index].firstName,
+                    lastName: users[index].lastName,
+                    email: users[index].email
+                };
+                localStorage.setItem("personalData", JSON.stringify(personalData));
+            }
             alert("User data saved successfully!");
-            renderUserTable(); // Обновляем таблицу
+            renderUserTable();
         };
 
         window.deleteUser = function(index) {
