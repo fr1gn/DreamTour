@@ -3,9 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href=" https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <title>My Personal Data</title>
     <link rel="icon" href="images/favicon.jfif" type="image/x-icon">
+
+    <style>
+        .icon {
+            width: 100px; /* Adjust to your desired size */
+            height: 100px; /* Adjust to your desired size */
+            border-radius: 50%; /* Makes the image circular */
+            object-fit: cover; /* Ensures the image covers the area */
+        }
+
+    </style>
 </head>
 <body id="personal_data">
 
@@ -67,7 +77,7 @@
         const email = document.getElementById("email").value;
         const city = document.getElementById("city").value;
 
-        const personalData = { firstName, lastName, email, city };
+        const personalData = { first_name: firstName, last_name: lastName, email, city };
         localStorage.setItem("personalData", JSON.stringify(personalData));
 
         alert("Your personal data has been saved successfully!");
@@ -76,16 +86,47 @@
     document.addEventListener("DOMContentLoaded", function() {
         const personalData = JSON.parse(localStorage.getItem("personalData"));
         if (personalData) {
-            document.getElementById("name").value = personalData.name.split(' ')[0];
-            document.getElementById("last_name").value = personalData.name.split(' ')[1] || '';
+            document.getElementById("first_name").value = personalData.first_name;
+            document.getElementById("last_name").value = personalData.last_name || '';
             document.getElementById("email").value = personalData.email;
             document.getElementById("phone_number").value = personalData.phone;
             document.getElementById("city").value = personalData.city;
         }
     });
 
+    function previewImage(event) {
+        const icon = document.querySelector('.icon');
+        const file = event.target.files[0];
 
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                icon.src = e.target.result; // Change the icon to the uploaded image
+            }
+            reader.readAsDataURL(file);
+        }
+    }
+
+    document.getElementById('logoutButton').addEventListener('click', function() {
+        // Clear user data
+        localStorage.removeItem("personalData");
+        // Redirect to index.html
+        window.location.href = 'index.html'; // Change this to your desired exit page
+    });
+
+    function previewImage(event) {
+        const icon = document.querySelector('.icon');
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                icon.src = e.target.result; // Change the icon to the uploaded image
+            }
+            reader.readAsDataURL(file);
+        }
+    }
 </script>
+
 
 
 <header>
@@ -106,6 +147,12 @@
                     <li class="nav-item"><a class="nav-link" href="about_us.html">About Us</a></li>
                     <li class="nav-item"><a class="nav-link" href="partners.html">Partners</a></li>
                     <li class="nav-item"><a class="nav-link" href="personal_data.html">Personal Data</a></li>
+                    <li class="nav-item">
+                        <button class="btn btn-outline-success" id="logoutButton"
+                                onclick="if (confirm('Are you sure you want to log out?')) { localStorage.removeItem('personalData'); window.location.href='index.html'; }">
+                            Exit
+                        </button>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -131,35 +178,47 @@
             <!-- Personal Data -->
             <section id="my-data" class="my-4">
                 <h2>My Data</h2>
-                <form class="row g-3" action="/save-data" method="POST">
-                    <div class="col-md-6">
-                        <div class="input-group">
-                            <span class="input-group-text">First Name</span>
-                            <input class="form-control" type="text" id="first_name" name="first_name" placeholder="Your first name" aria-label="First Name" required>
+                <div class="row">
+                    <div class="col-md-3 d-flex flex-column align-items-center mb-4">
+                        <div class="profile-container text-center">
+                            <img src="images/personal/default-profile.jpg" alt="Profile Icon" class="icon mb-2">
+                            <input type="file" id="profile-upload" accept="image/*" onchange="previewImage(event)" class="form-control-file mt-2">
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="input-group">
-                            <span class="input-group-text">Last Name</span>
-                            <input class="form-control" type="text" id="last_name" name="last_name" placeholder="Your last name" aria-label="First Name" required>
-                        </div>
+
+                    <div class="col-md-9">
+                        <form id="personalDataForm" class="row g-3" action="/save-data" method="POST">
+                            <div class="col-12">
+                                <div class="input-group">
+                                    <span class="input-group-text">First Name</span>
+                                    <input class="form-control" type="text" id="first_name" name="first_name" placeholder="Your first name" aria-label="First Name" required>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="input-group">
+                                    <span class="input-group-text">Last Name</span>
+                                    <input class="form-control" type="text" id="last_name" name="last_name" placeholder="Your last name" aria-label="Last Name" required>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="input-group">
+                                    <span class="input-group-text">Email</span>
+                                    <input class="form-control" type="email" id="email" name="email" placeholder="Your email" aria-label="Email" required>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="input-group">
+                                    <span class="input-group-text">City</span>
+                                    <input class="form-control" type="text" id="city" name="city" placeholder="City" aria-label="City">
+                                </div>
+                            </div>
+                            <!-- Save button in a centered position -->
+                            <div class="col-12 text-center mt-3">
+                                <button class="btn btn-outline-success" type="submit">Save</button>
+                            </div>
+                        </form>
                     </div>
-                    <div class="col-md-6">
-                        <div class="input-group">
-                            <span class="input-group-text">Email</span>
-                            <input class="form-control" type="email" id="email" name="email" placeholder="Your email" aria-label="Email" required>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="input-group">
-                            <span class="input-group-text">City</span>
-                            <input class="form-control" type="text" id="city" name="city" placeholder="City" aria-label="City">
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <button class="btn btn-outline-success" type="submit">Save</button>
-                    </div>
-                </form>
+                </div>
             </section>
 
             <!-- My Travels -->
@@ -175,10 +234,27 @@
                             </button>
                         </h2>
                         <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionFlushExample">
-                            <div class="accordion-body">
-                                Egypt<br>
-                                Date: 31 October - 09 November<br>
-                                <strong>Status:</strong> Upcoming
+                            <div class="accordion-body d-flex align-items-center">
+                                <div class="col-md-4">
+                                    <h5>Egypt</h5>
+                                    <p>Date: 31 October - 09 November</p>
+                                    <strong>Status:</strong> Upcoming<br><br>
+
+                                    <h6>Best Time to Visit:</h6>
+                                    <p>October to April for mild temperatures.</p>
+
+                                    <h6>Key Destinations:</h6>
+                                    <ul>
+                                        <li><strong>Cairo:</strong> Home to the Egyptian Museum and bustling bazaars.</li>
+                                        <li><strong>Luxor:</strong> Explore the Valley of the Kings and Karnak Temple.</li>
+                                        <li><strong>Aswan:</strong> Visit the magnificent Abu Simbel temples.</li>
+                                        <li><strong>Sharm El Sheikh:</strong> Relax on stunning beaches and enjoy water sports.</li>
+                                    </ul>
+                                </div>
+
+                                <div class="col-md-6 text-end">
+                                    <img src="images/personal/egypt.jpg" alt="egypt" class="card-img-top rounded" style="width: 60%; height: auto; margin-left: 20px;">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -191,11 +267,28 @@
                             </button>
                         </h2>
                         <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionFlushExample">
-                            <div class="accordion-body">
-                                Greece<br>
-                                Date: 15 November - 25 November<br>
-                                <strong>Status:</strong> Upcoming
+                            <div class="accordion-body d-flex align-items-center">
+                                <div class="col-md-4">
+                                    <h5>Greece</h5>
+                                    <p>Date: 15 November - 25 November</p>
+                                    <strong>Status:</strong> Upcoming<br><br>
+
+                                    <h6>Best Time to Visit:</h6>
+                                    <p>April to June and September to October for pleasant weather.</p>
+
+                                    <h6>Key Destinations:</h6>
+                                    <ul>
+                                        <li><strong>Athens:</strong> Visit the Acropolis and the ancient Agora.</li>
+                                        <li><strong>Santorini:</strong> Famous for its breathtaking sunsets and whitewashed buildings.</li>
+                                        <li><strong>Mykonos:</strong> A lively island known for its nightlife and beautiful beaches.</li>
+                                        <li><strong>Crete:</strong> The largest Greek island with a rich history and stunning landscapes.</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6 text-end">
+                                    <img src="images/personal/greece.jpg" alt="greece" class="card-img-top rounded" style="width: 65%; height: auto; margin-left: 20px;">
+                                </div>
                             </div>
+
                         </div>
                     </div>
 
@@ -207,10 +300,25 @@
                             </button>
                         </h2>
                         <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionFlushExample">
-                            <div class="accordion-body">
-                                Spain<br>
-                                Date: 01 December - 10 December<br>
-                                <strong>Status:</strong> Upcoming
+                            <div class="accordion-body d-flex align-items-center">
+                                <div class="col-md-4"><h5>Spain</h5>
+                                    <p>Date: 01 December - 10 December</p>
+                                    <strong>Status:</strong> Upcoming<br><br>
+
+                                    <h6>Best Time to Visit:</h6>
+                                    <p>March to May and September to November for mild weather.</p>
+
+                                    <h6>Key Destinations:</h6>
+                                    <ul>
+                                        <li><strong>Barcelona:</strong> Famous for its unique architecture, including Gaudí's Sagrada Família.</li>
+                                        <li><strong>Madrid:</strong> The capital city, known for its art museums and vibrant nightlife.</li>
+                                        <li><strong>Seville:</strong> Renowned for its flamenco dancing and historic sites.</li>
+                                        <li><strong>Valencia:</strong> Known for its beautiful beaches and the City of Arts and Sciences.</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6 text-end">
+                                    <img src="images/personal/madrid.jpg" alt="spain" class="card-img-top rounded" style="width: 65%; height: auto;margin-left: 20px;">
+                                </div>
                             </div>
                         </div>
                     </div>
