@@ -3,130 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href=" https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <title>My Personal Data</title>
     <link rel="icon" href="images/favicon.jfif" type="image/x-icon">
 
     <style>
         .icon {
-            width: 100px; /* Adjust to your desired size */
-            height: 100px; /* Adjust to your desired size */
-            border-radius: 50%; /* Makes the image circular */
-            object-fit: cover; /* Ensures the image covers the area */
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
         }
-
     </style>
 </head>
 <body id="personal_data">
-
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const links = document.querySelectorAll('aside nav a');
-        const sections = document.querySelectorAll('main section');
-        const accordionButtons = document.querySelectorAll('.accordion-button');
-
-        accordionButtons.forEach(button => {
-            button.addEventListener('click', function () {
-                const targetId = button.getAttribute('data-bs-target');
-                const collapseElement = document.querySelector(targetId);
-
-                // Toggle collapsed state
-                button.classList.toggle('collapsed');
-
-                // Check if the accordion is collapsed or expanded
-                if (button.classList.contains('collapsed')) {
-                    collapseElement.classList.remove('show');
-                } else {
-                    collapseElement.classList.add('show');
-                }
-            });
-        });
-
-        function showSection(targetId) {
-            sections.forEach(section => {
-                section.style.display = section.id === targetId ? 'block' : 'none';
-            });
-        }
-
-        showSection('my-data');
-
-        links.forEach(link => {
-            link.addEventListener('click', function (event) {
-                event.preventDefault();
-                links.forEach(item => item.classList.remove('active'));
-                this.classList.add('active');
-                const targetId = this.getAttribute('href').substring(1);
-                showSection(targetId);
-            });
-        });
-
-        const forms = document.querySelectorAll('form');
-        forms.forEach(form => {
-            form.addEventListener('submit', function (event) {
-                event.preventDefault();
-                alert("Your data has been saved successfully!");
-            });
-        });
-    });
-
-    document.getElementById("personalDataForm").addEventListener("submit", function(event) {
-        event.preventDefault();
-
-        const firstName = document.getElementById("first_name").value;
-        const lastName = document.getElementById("last_name").value;
-        const email = document.getElementById("email").value;
-        const city = document.getElementById("city").value;
-
-        const personalData = { first_name: firstName, last_name: lastName, email, city };
-        localStorage.setItem("personalData", JSON.stringify(personalData));
-
-        alert("Your personal data has been saved successfully!");
-    });
-    document.addEventListener("DOMContentLoaded", function() {
-        const personalData = JSON.parse(localStorage.getItem("personalData"));
-        if (personalData) {
-            document.getElementById("first_name").value = personalData.first_name;
-            document.getElementById("last_name").value = personalData.last_name || '';
-            document.getElementById("email").value = personalData.email;
-            document.getElementById("phone_number").value = personalData.phone;
-            document.getElementById("city").value = personalData.city;
-        }
-    });
-
-    function previewImage(event) {
-        const icon = document.querySelector('.icon');
-        const file = event.target.files[0];
-
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                icon.src = e.target.result; // Change the icon to the uploaded image
-            }
-            reader.readAsDataURL(file);
-        }
-    }
-
-    document.getElementById('logoutButton').addEventListener('click', function() {
-        // Clear user data
-        localStorage.removeItem("personalData");
-        // Redirect to index.html
-        window.location.href = 'index.html'; // Change this to your desired exit page
-    });
-
-    function previewImage(event) {
-        const icon = document.querySelector('.icon');
-        const file = event.target.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                icon.src = e.target.result; // Change the icon to the uploaded image
-            }
-            reader.readAsDataURL(file);
-        }
-    }
-</script>
-
-
 
 <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
@@ -147,10 +37,7 @@
                     <li class="nav-item"><a class="nav-link" href="partners.html">Partners</a></li>
                     <li class="nav-item"><a class="nav-link" href="personal_data.html">Personal Data</a></li>
                     <li class="nav-item">
-                        <button class="btn btn-outline-success" id="logoutButton"
-                                onclick="if (confirm('Are you sure you want to log out?')) { localStorage.removeItem('personalData'); window.location.href='index.html'; }">
-                            Exit
-                        </button>
+                        <button class="btn btn-outline-danger" id="logoutButton" >Exit</button>
                     </li>
                 </ul>
             </div>
@@ -176,44 +63,91 @@
 
             <!-- Personal Data -->
             <section id="my-data" class="my-4">
-                <h2>My Data</h2>
+                <h2>Personal Data</h2><br>
                 <div class="row">
-                    <div class="col-md-3 d-flex flex-column align-items-center mb-4">
-                        <div class="profile-container text-center">
-                            <img src="images/personal/default-profile.jpg" alt="Profile Icon" class="icon mb-2">
-                            <input type="file" id="profile-upload" accept="image/*" onchange="previewImage(event)" class="form-control-file mt-2">
-                        </div>
-                    </div>
-
-                    <div class="col-md-9">
-                        <form id="personalDataForm" class="row g-3" action="/save-data" method="POST">
-                            <div class="col-12">
-                                <div class="input-group">
+                    <div class="col-11">
+                        <form id="allDataForm" class="row g-3 p-3 border rounded" action="/save-data" method="POST" enctype="multipart/form-data">
+                            <!-- Personal Data Fields -->
+                            <div class="col-md-12 d-flex flex-column align-items-center mb-4">
+                                <div class="profile-container text-center">
+                                    <img src="images/personal/default-profile.jpg" alt="Profile Icon" class="icon mb-2" id="profileImage">
+                                    <input type="file" id="profile-upload" accept="image/*" onchange="previewImage(event)" class="form-control-file mt-2">
+                                    <button class="btn btn-outline-danger mt-2" id="deleteProfilePhoto">Delete Profile Photo</button>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="input-group mb-3">
                                     <span class="input-group-text">First Name</span>
-                                    <input class="form-control" type="text" id="first_name" name="first_name" placeholder="Your first name" aria-label="First Name" required>
+                                    <input class="form-control" type="text" id="first_name" name="first_name" placeholder="Your first name" required>
                                 </div>
                             </div>
-                            <div class="col-12">
-                                <div class="input-group">
+                            <div class="col-md-6">
+                                <div class="input-group mb-3">
                                     <span class="input-group-text">Last Name</span>
-                                    <input class="form-control" type="text" id="last_name" name="last_name" placeholder="Your last name" aria-label="Last Name" required>
+                                    <input class="form-control" type="text" id="last_name" name="last_name" placeholder="Your last name" required>
                                 </div>
                             </div>
-                            <div class="col-12">
-                                <div class="input-group">
+                            <div class="col-md-6">
+                                <div class="input-group mb-3">
                                     <span class="input-group-text">Email</span>
-                                    <input class="form-control" type="email" id="email" name="email" placeholder="Your email" aria-label="Email" required>
+                                    <input class="form-control" type="email" id="email" name="email" placeholder="Your email" required>
                                 </div>
                             </div>
+                            <div class="col-md-6">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text">Date of Birth</span>
+                                    <input class="form-control" type="date" id="date_of_bd" name="date_of_bd">
+                                </div>
+                            </div>
+                            <div class="col-md-6 mt-3">
+                                <span class="form-label d-block">Gender</span>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="gender" value="Male" id="male">
+                                    <span class="form-check-label" for="male">Male</span>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="gender" value="Female" id="female">
+                                    <span class="form-check-label" for="female">Female</span>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="gender" value="Other" id="other">
+                                    <span class="form-check-label" for="other">Other</span>
+                                </div>
+                            </div>
+
+                            <!-- Address Field -->
+                            <h2 class="mt-5">Address</h2>
                             <div class="col-12">
-                                <div class="input-group">
-                                    <span class="input-group-text">City</span>
-                                    <input class="form-control" type="text" id="city" name="city" placeholder="City" aria-label="City">
+                                <div class="input-group mb-4">
+                                    <span class="input-group-text">Address</span>
+                                    <input class="form-control" type="text" id="address" name="address" placeholder="Address of registration">
                                 </div>
                             </div>
-                            <!-- Save button in a centered position -->
-                            <div class="col-12 text-center mt-3">
-                                <button class="btn btn-outline-success" type="submit">Save</button>
+
+                            <!-- Document Details (Kazakhstan Only) -->
+                            <h2>Document Details (Kazakhstan Only)</h2>
+                            <div class="col-md-4">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text">IIN</span>
+                                    <input class="form-control" type="number" min="1" id="iin" name="iin" placeholder="Enter IIN number" required>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text">Issue Date</span>
+                                    <input class="form-control" type="date" id="issueDate" name="issueDate" required>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text">Issued By</span>
+                                    <input class="form-control" type="text" id="issuedBy" name="issuedBy" placeholder="Issuing authority" required>
+                                </div>
+                            </div>
+
+                            <!-- Save All Data Button -->
+                            <div class="col-12 text-center mt-4">
+                                <button class="btn btn-outline-success text-center" type="submit">Save All Data</button>
                             </div>
                         </form>
                     </div>
@@ -325,21 +259,20 @@
                 </div>
             </section>
 
-
-            <!-- My Notes -->
+            <!-- My Notes Section -->
             <section id="my-notes" class="my-4">
                 <h2>My Notes</h2>
-                <form class="row g-3" action="/save-data" method="POST">
-                    <textarea class="form-control" style="height: 100px" placeholder="Enter a note..."></textarea><br>
+                <form id="notesForm" class="row g-3">
+                    <textarea id="notesInput" class="form-control" style="height: 100px" placeholder="Enter a note..."></textarea><br>
                     <div class="col-12">
                         <button class="btn btn-outline-success" type="submit">Save</button>
                     </div>
                 </form>
             </section>
+
         </main>
     </div>
 </div>
-
 
 <footer class="bg-white py-4">
     <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center">
@@ -365,6 +298,143 @@
         <p class="small mb-0">Copywriting © 2024 personal data page by Balzhan Komekbaeva SE-2301</p>
     </div>
 </footer>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- JavaScript Code -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const links = document.querySelectorAll('aside nav a');
+        const sections = document.querySelectorAll('main section');
+        const accordionButtons = document.querySelectorAll('.accordion-button');
+
+        accordionButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                const targetId = button.getAttribute('data-bs-target');
+                const collapseElement = document.querySelector(targetId);
+
+                button.classList.toggle('collapsed');
+                collapseElement.classList.toggle('show');
+            });
+        });
+
+        function showSection(targetId) {
+            sections.forEach(section => {
+                section.style.display = section.id === targetId ? 'block' : 'none';
+            });
+        }
+
+        showSection('my-data');
+
+        links.forEach(link => {
+            link.addEventListener('click', function (event) {
+                event.preventDefault();
+                links.forEach(item => item.classList.remove('active'));
+                this.classList.add('active');
+                const targetId = this.getAttribute('href').substring(1);
+                showSection(targetId);
+            });
+        });
+
+        const form = document.getElementById("personalDataForm");
+        form.addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const firstName = document.getElementById("first_name").value;
+            const lastName = document.getElementById("last_name").value;
+            const email = document.getElementById("email").value;
+            const city = document.getElementById("city").value;
+
+            const personalData = { firstName, lastName, email, city };
+            localStorage.setItem("personalData", JSON.stringify(personalData));
+            alert("Your personal data has been saved successfully!");
+        });
+
+        // Retrieve data from localStorage
+        const savedData = JSON.parse(localStorage.getItem("personalData"));
+        if (savedData) {
+            document.getElementById("first_name").value = savedData.firstName || '';
+            document.getElementById("last_name").value = savedData.lastName || '';
+            document.getElementById("email").value = savedData.email || '';
+            document.getElementById("city").value = savedData.city || '';
+        }
+
+    });
+
+    document.getElementById('logoutButton').addEventListener('click', function(event) {
+        event.preventDefault();
+
+        if (confirm('Are you sure you want to log out?')) {
+            window.location.href = 'index.html'; // Redirect to the login page or home page
+        }
+    });
+
+    function previewImage(event) {
+        const image = document.getElementById('profileImage');
+        image.src = URL.createObjectURL(event.target.files[0]);
+    }
+
+    document.getElementById('deleteProfilePhoto').addEventListener('click', function () {
+        const image = document.getElementById('profileImage');
+        image.src = 'images/personal/default-profile.jpg'; // Reset to default image
+        document.getElementById('profile-upload').value = ''; // Clear the file input
+    });
+
+    function saveData() {
+        const userData = {
+            firstName: document.getElementById('first_name').value,
+            lastName: document.getElementById('last_name').value,
+            email: document.getElementById('email').value,
+            dateOfBirth: document.getElementById('date_of_bd').value,
+            gender: document.querySelector('input[name="gender"]:checked')?.value,
+            address: document.getElementById('address').value,
+            iin: document.getElementById('iin').value,
+            issueDate: document.getElementById('issueDate').value,
+            issuedBy: document.getElementById('issuedBy').value,
+        };
+
+        localStorage.setItem('userData', JSON.stringify(userData));
+        alert('Data saved successfully!');
+    }
+
+    // Function to load data from localStorage
+    function loadData() {
+        const savedData = localStorage.getItem('userData');
+        if (savedData) {
+            const userData = JSON.parse(savedData);
+            document.getElementById('first_name').value = userData.firstName || '';
+            document.getElementById('last_name').value = userData.lastName || '';
+            document.getElementById('email').value = userData.email || '';
+            document.getElementById('date_of_bd').value = userData.dateOfBirth || '';
+            if (userData.gender) {
+                document.querySelector(`input[name="gender"][value="${userData.gender}"]`).checked = true;
+            }
+            document.getElementById('address').value = userData.address || '';
+            document.getElementById('iin').value = userData.iin || '';
+            document.getElementById('issueDate').value = userData.issueDate || '';
+            document.getElementById('issuedBy').value = userData.issuedBy || '';
+        }
+    }
+
+    // Function to clear user data on logout
+    function logout() {
+        localStorage.removeItem('userData');
+    }
+
+    // Load data when the page is loaded
+    window.onload = loadData;
+
+    // Event listener for form submission
+    document.getElementById('allDataForm').onsubmit = function(event) {
+        event.preventDefault(); // Prevent form submission
+        saveData();
+    };
+
+    // Event listener for logout button
+    document.getElementById('logoutButton').onclick = logout;
+
+</script>
+
+
+<script src=" https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-B4gt1jrGC7Jh4AgEPu3YjKn02oKfsaSaSY9DvE4l5TqzrmxtJIBRBqur24BLnP4R" crossorigin="anonymous"></script>
+<script src=" https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
