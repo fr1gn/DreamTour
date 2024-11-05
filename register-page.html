@@ -72,7 +72,15 @@
         const password = document.getElementById("new-password").value.trim();
         const confirmPassword = document.getElementById("confirm-password").value.trim();
 
+        // Password validation: at least one uppercase, one lowercase, one symbol, 8 characters long
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\W)(?=.{8,})/;
+
         if (username && password && confirmPassword) {
+            if (!passwordRegex.test(password)) {
+                alert("Password must be at least 8 characters long and include one uppercase letter, one lowercase letter, and one symbol.");
+                return;
+            }
+
             if (password === confirmPassword) {
                 const users = JSON.parse(localStorage.getItem("users")) || [];
                 users.push({ username, password, role: "user" });
